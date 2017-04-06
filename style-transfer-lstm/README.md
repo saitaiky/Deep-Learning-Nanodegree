@@ -1,3 +1,6 @@
+## Intro.
+In this demo, I will show you how to use a pre-trained model(vgg16) to implement a Deep Learning network to learn from a  image and apply the style a photo that I took in JP by using Transfer Learning.
+
 ##Dependencies
 
 run `pip install -r requirements.txt` to install the necessary dependencies
