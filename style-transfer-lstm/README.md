@@ -6,7 +6,7 @@ In this demo, I will show you how to use a pre-trained model(vgg16) to implement
 run `pip install -r requirements.txt` to install the necessary dependencies
 
 
-##Usage
+## Usage
 
 If it doesn't exist, create a file called ~/.keras/keras.json and make sure it looks like the following:
 
@@ -21,7 +21,7 @@ If it doesn't exist, create a file called ~/.keras/keras.json and make sure it l
 
 Then you can run the code via typing `jupyter notebook` into terminal
 
-##Credits
+## Credits
 The credits for this code go to [hnarayanan](https://github.com/hnarayanan/artistic-style-transfer). 
 
 
