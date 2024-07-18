@@ -13461,7 +13461,7 @@ div#notebook {
 <h2 id="Loading-VGG16-pre-trained-model-to-train-our-CNN">Loading VGG16 pre-trained model to train our CNN<a class="anchor-link" href="https://htmtopdf.herokuapp.com/ipynbviewer/temp/e117c36485e4cb212a24dd8a6178dfb9/transfer-learning.html?t=1698067901841#Loading-VGG16-pre-trained-model-to-train-our-CNN">¶</a></h2><p>The core idea introduced by <a href="https://arxiv.org/abs/1508.06576">Gatys et al. (2015)</a> is that convolutional neural networks (CNNs) pre-trained for image classification already know how to encode perceptual and semantic information about images. We're going to follow their idea, and use the <em>feature spaces</em> provided by one such model to independently work with content and style of images.</p>
 <p>The original paper uses the 19 layer VGG network model from <a href="https://arxiv.org/abs/1409.1556">Simonyan and Zisserman (2015)</a>, but we're going to instead follow <a href="https://arxiv.org/abs/1603.08155">Johnson et al. (2016)</a> and use the 16 layer model (VGG16). There is no noticeable qualitative difference in making this choice, and we gain a tiny bit in speed.</p>
 <p>Also, since we're not interested in the classification problem, we don't need the fully connected layers or the final softmax classifier. We only need the part of the model marked in green in the table below.</p>
-<p><img src="./transfer-learning_files/vgg-architecture.png" alt="VGG Network Architectures" title="VGG Network Architectures"></p>
+<p><img src="./transfer-learning_files/images/vgg-architecture.png" alt="VGG Network Architectures" title="VGG Network Architectures"></p>
 <p>It is trivial for us to get access to this truncated model because Keras comes with a set of pretrained models, including the VGG16 model we're interested in. Note that by setting <code>include_top=False</code> in the code below, we don't include any of the fully connected layers.</p>
 
 </div>
@@ -13580,7 +13580,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="The-content-loss">The content loss<a class="anchor-link" href="https://htmtopdf.herokuapp.com/ipynbviewer/temp/e117c36485e4cb212a24dd8a6178dfb9/transfer-learning.html?t=1698067901841#The-content-loss">¶</a></h3><p>For the content loss, we follow Johnson et al. (2016) and draw the content feature from <code>block2_conv2</code>, because the original choice in Gatys et al. (2015) (<code>block4_conv2</code>) loses too much structural detail. And at least for faces, I find it more aesthetically pleasing to closely retain the structure of the original content image.</p>
 <p>This variation across layers is shown for a couple of examples in the images below (just mentally replace <code>reluX_Y</code> with our Keras notation <code>blockX_convY</code>).</p>
-<p><img src="./transfer-learning_files/content-feature.png" alt="Content feature reconstruction" title="Content feature reconstruction"></p>
+<p><img src="./transfer-learning_files/images/content-feature.png" alt="Content feature reconstruction" title="Content feature reconstruction"></p>
 <p>The content loss is the (scaled, squared) Euclidean distance between feature representations of the content and combination images.</p>
 
 </div>
